@@ -22,23 +22,19 @@ class MyClient(discord.Client):
     async def on_ready(self): # logging the bot in
         print(f'Logged on as {self.user}!')
 
-    async def on_message(self, message): #doesnt respond to the bot's own messages
-        if message.author == self.user:
-            return
-
-        print(f'Message from {message.author}: {message.content}')
-
+    async def on_message(self, message):
         if message.attachments:
+            # Image input handling
             clear_folder(IMAGE_FOLDER)
             
             for attachment in message.attachments:
                 if attachment.filename.endswith(('.png', '.jpg', '.jpeg')):
-
                     save_path = os.path.join(IMAGE_FOLDER, attachment.filename)
-
                     await attachment.save(save_path)
-
-                    print(f"Image saved at {save_path}!")
+                    await message.channel.send("Hello World!")  # Send "Hello World!" to the channel
+        elif message.content:
+            # Text input handling
+            print(f"Message from {message.author}: {message.content}")
 
 intents = discord.Intents.default()
 intents.message_content = True
