@@ -7,8 +7,12 @@ Set-up Instructions:
 3. Go to the Bot tab.
 4. Click on reset token.
 5. Copy the token and use it in the code file.
+6. Create an env file that includes a google maps api key and your token structured like this:
+
+TOKEN = 'TOKEN HERE'   
+APIKEY = 'API HERE'
 
 How to use it?
 1. Submit an image of potential skin lesion to the bot.
 2. If melanoma is detected after the bot analyzes the image, input your location.
-3. The Bot will then tell you the nearest 5 hospitals. 
+3. The Bot will then tell you the nearest 5 hospitals.
