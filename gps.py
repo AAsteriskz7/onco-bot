@@ -1,6 +1,10 @@
 import googlemaps
+import os
+from dotenv import load_dotenv
 
-API_KEY = 'AIzaSyAz6_2rp8WGUVsPqOx3t1CbFUERBUidWwQ'
+load_dotenv()
+
+API_KEY = os.environ.get('APIKEY')
 gmaps = googlemaps.Client(key=API_KEY)
 
 def get_nearest_hospitals(address):
@@ -34,8 +38,8 @@ def get_nearest_hospitals(address):
 address_input = "1600 Amphitheatre Parkway, Mountain View, CA"
 hospitals = get_nearest_hospitals(address_input)
 
-if hospitals:
-    for i, hospital in enumerate(hospitals, start=1):
-        print(f"{i}. {hospital['name']} - {hospital['address']}")
-else:
-    print("No hospitals found.")
+# if hospitals:
+#     for i, hospital in enumerate(hospitals, start=1):
+#         print(f"{i}. {hospital['name']} - {hospital['address']}")
+# else:
+#     print("No hospitals found.")

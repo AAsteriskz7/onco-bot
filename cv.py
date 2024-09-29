@@ -1,9 +1,7 @@
-import os
 import cv2
-import matplotlib.pyplot as plt
 import numpy as np
 
-folder_path = 'train\\benign'
+# folder_path = 'train\\benign'
 
 def label(filename): 
     img = cv2.imread(filename)
@@ -35,7 +33,7 @@ def label(filename):
     for contour in contours:
         c = c+1
         if c == 15:
-            return True
+            return False
     
     for contour in contours:
         if (cv2.contourArea(contour) > 0):
@@ -47,15 +45,15 @@ def label(filename):
 correct = 0    
 count = 0
 
-if __name__ == "__main__":
-    for filename in os.listdir(folder_path):
-        file_path = os.path.join(folder_path, filename)
+# if __name__ == "__main__":
+#     for filename in os.listdir(folder_path):
+#         file_path = os.path.join(folder_path, filename)
 
 
-        if (os.path.isfile(file_path)):
-            if (main(file_path)):
-                correct = correct + 1
-        count = count + 1
+#         if (os.path.isfile(file_path)):
+#             if (main(file_path)):
+#                 correct = correct + 1
+#         count = count + 1
 
-    print(str(correct) + "/" + str(count))
-    print(correct/count*100)
+#     print(str(correct) + "/" + str(count))
+#     print(correct/count*100)
